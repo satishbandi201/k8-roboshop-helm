@@ -8,12 +8,12 @@ metadata:
     project: roboshop
     tier: database
 spec:
-  clusterIp: None
+  clusterIP: None
   selector:
     component: mongodb
     project: roboshop
     tier: database
   ports:
   - protocol: TCP
-    port: 27017 #service port
-    targetPort: 27017 #container port
+    port: 27017 # service port
+    targetPort: 27017 # container port
