@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+  namespace: roboshop
+  labels:
+    component: redis
+    project: roboshop
+    tier: database
+spec:
+  selector:
+    matchLabels:
+      component: redis
+      project: roboshop
+      tier: database # has to match .spec.template.metadata.labels
+  serviceName: "redis-headless" # this should be headless service
+  replicas: 2 # by default is 1
+  template:
+    metadata:
+      labels:
+        component: redis
+        project: roboshop
+        tier: database
+    spec:
+      containers:
+      - name: redis
+        image: "{{ .Values.statefulset.imageURL}}:{{ .Values.statefulset.imageVersion }}"
+        volumeMounts:
+        - name: redis-data
+          mountPath: /data
+  # This is nothing but PVC, you can directly create here
+  volumeClaimTemplates:
+  - metadata:
+      name: redis-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "roboshop-ebs"
+      resources:
+        requests:
+          storage: 2Gi

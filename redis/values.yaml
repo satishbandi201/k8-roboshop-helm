@@ -1,0 +1,3 @@
+statefulset:
+  imageURL: redis
+  imageVersion: 7.0
