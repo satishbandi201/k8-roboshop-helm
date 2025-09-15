@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    component: mongodb
+    project: roboshop
+    tier: database
+spec:
+  selector:
+  matcLabels:
+    component: mongodb
+    project: roboshop
+    tier: database
+  ServiceName: "mongodb-headless"
