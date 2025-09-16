@@ -2,4 +2,4 @@ apiVersion: v2
 name: mysql
 version: 1.0.0 #chart version 
 description: mysql helm chart description
-apiVersion: v1 # application version
+appVersion: v1 # application version
