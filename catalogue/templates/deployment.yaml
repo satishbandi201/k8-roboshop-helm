@@ -30,6 +30,6 @@ spec:
           requests:
             memory: "128Mi"
             cpu: "250m"
-        envFROM:
+        envFrom:
         - configMapRef:
             name: catalogue
